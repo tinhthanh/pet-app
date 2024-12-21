@@ -1,0 +1,16 @@
+{
+    "form": {
+        "validators": {
+          "required": "Vui lòng điền thông tin {{label}}",
+          "email" : "Hộp thư không đúng định dạng",
+          "phone": "Số điện thoại không hợp lệ",
+          "date" : "Nhập {{label}} theo format dd/MM/yyyy",
+          "dateTime" : "Nhập {{label}} theo format dd/MM/yyyy HH:mm",
+          "maxLength" : "Số ký tự {{actualLength}} vượt quá {{requiredLength}}",
+          "minLength" : "Số ký tự {{actualLength}} không đủ {{requiredLength}}",
+          "min" :"{{label}} nhỏ hơn {{min}}",
+          "max": "{{label}} lớn hơn {{max}}",
+          "json":"Định dạng json không hợp lệ"
+        }
+      }
+}

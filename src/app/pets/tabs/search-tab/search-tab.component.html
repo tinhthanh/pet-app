@@ -1,0 +1,24 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Danh sách thú cưng</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding" style="--background: #f2f6f9;">
+  <ion-refresher style="background-color: transparent;" slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content style="background-color: transparent;"></ion-refresher-content>
+  </ion-refresher>
+  <app-search-pet></app-search-pet>
+  <app-pet-card (vgViewDetails)="viewDetails()" ></app-pet-card>
+  <app-bsc-clinc style="scale: 1.1;" [breed]="'meo'"></app-bsc-clinc>
+  <app-temperature style="zoom: 0.5;"></app-temperature>
+  <app-scale></app-scale>
+  <ion-nav-link router-direction="forward" [component]="component">
+    <ion-button>Go to Page Two</ion-button>
+  </ion-nav-link>
+  <ion-button (click)="toLink()">Go to Page Two 2</ion-button>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

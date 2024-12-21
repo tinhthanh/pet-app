@@ -1,0 +1,23 @@
+<div id="wrapper">
+	<div id="termometer">
+		<div id="temperature" [style.height.%]="temperatureHeight" [attr.data-value]="temperatureValue"></div>
+		<div id="graduations"></div>
+	</div>
+
+	<div id="playground">
+		<div id="range">
+
+			<!-- <input id="minTemp" type="text" [(ngModel)]="config.minTemp" (change)="onMinMaxChange('minTemp')"> -->
+      <input
+      type="text"
+      [min]="config.minTemp"
+      [max]="config.maxTemp"
+      [step]="0.1"
+      [(ngModel)]="rangeValue"
+      (input)="updateTemperature()">
+
+			<!-- <input id="maxTemp" type="text" [(ngModel)]="config.maxTemp" (change)="onMinMaxChange('maxTemp')"> -->
+		</div>
+		<!-- <p id="unit" (click)="toggleUnit()">{{ config.unit }} {{ units[config.unit] }}</p> -->
+	</div>
+</div>

@@ -1,0 +1,39 @@
+
+.radio-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+label  {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+  .form-check-label {
+    padding: 0 10px 0 10px;
+    color: var(--color-950 , #666670) ;
+  }
+}
+input[disabled]~.form-check-label, .form-check-input[disabled]~.form-check-label {
+  cursor: default;
+  opacity: .5;
+}
+.inline {
+  .radio-wrapper {
+    flex-direction: row;
+  }
+  label {
+    margin-bottom: 0;
+  }
+}
+.label-field {
+  color: var(--color-950 , #666670) ;
+  font-weight: bold;
+  font-size: 12px;
+  sup {
+    color: var(--color5);
+  }
+}

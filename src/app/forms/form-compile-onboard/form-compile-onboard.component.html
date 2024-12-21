@@ -1,0 +1,26 @@
+<ion-toast
+    [color]="'danger'"
+    [isOpen]="isToastOpen()"
+    [message]="message()"
+    [duration]="5000"
+    [position]="'middle'"
+    (didDismiss)="isToastOpen.set(false)"
+  ></ion-toast>
+@switch (step()) {
+  @case (OnBoardStep.login) {
+    <app-form-login [loading]="loading()" (vgSubmit)="signIn($event)" (nextStep)="nextStep($event)" ></app-form-login>
+  }
+  @case (OnBoardStep.forgot) {
+    <app-form-forgot [loading]="loading()" (nextStep)="nextStep($event)" (vgSubmit)="checkExits($event)" ></app-form-forgot>
+  }
+  @case (OnBoardStep.register) {
+    <app-form-register [loading]="loading()" (nextStep)="nextStep($event)" (vgSubmit)="signUp($event)" ></app-form-register>
+  }
+  @case (OnBoardStep.verify) {
+    <app-form-otp [loading]="loading()" (vgSubmit)="verify($event)" (nextStep)="nextStep($event)" ></app-form-otp>
+  }
+  @case (OnBoardStep.changePass) {
+    <app-form-change-pass [loading]="loading()" (vgSubmit)="changePass($event)"></app-form-change-pass>
+  }
+}
+  <app-btn-close (vgClose)="closeForm()" class="pt-4" ></app-btn-close>

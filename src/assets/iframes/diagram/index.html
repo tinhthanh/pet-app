@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0 auto;
+    }
+    .mermaid {
+      display: none;
+    }
+    .mermaid[data-processed="true"] {
+      display: block;
+    }
+    .error-text {
+      display: none !important;
+    }
+    </style>
+</head>
+<body>
+  <div class="diagram"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.8.0/mermaid.min.js" defer></script>
+  <script defer>
+    let input = { text: '' }; // input
+    let output = { init: { funcName: 'init', params: { text: '' } } }; // output
+  
+    let broadCast = null;
+    let isMermaidInitialized = false; // Kiểm tra xem mermaid đã khởi tạo chưa
+  
+    function init(text = '') {
+      const el = document.querySelector('.diagram');
+      el.innerHTML = '';
+      const child = document.createElement('div');
+      child.classList.add("vg-diagram");
+  
+      child.textContent = text.trim();
+      el.appendChild(child);
+  
+      if (!isMermaidInitialized) {
+        // Nếu mermaid chưa được khởi tạo, khởi tạo lần đầu tiên
+        mermaid.initialize({ startOnLoad: true, theme: 'forest' });
+        isMermaidInitialized = true;
+      }
+  
+      // Render lại biểu đồ
+      mermaid.init({}, ".vg-diagram");
+    }
+  
+    // Add an event listener to run when a message is received
+    window.addEventListener("message", ({ data, source }) => {
+      try {
+        const { parentId } = JSON.parse(data);
+        if (parentId && !this.broadCast) {
+          // First init
+          this.broadCast = new BroadcastChannel(parentId);
+          this.broadCast.postMessage({ output });
+          // Wait for event
+          this.broadCast.onmessage = ({ data }) => {
+            if (this[data.funcName]) {
+              this[data.funcName](data.params);
+            }
+          };
+        }
+      } catch {}
+    });
+  </script>
+  
+</body>
+
+</html>

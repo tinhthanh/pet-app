@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .markmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    </style>
+</head>
+<body>
+  <div id="vgSvg"></div>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader" defer  ></script>
+  <script defer>
+    let input = {text: ''}; // input
+    let output = {init: { funcName: 'init' , params: {text: ''} }}; // output
+
+    let broadCast = null
+      function init(text = '') {
+        const vgSvg =document.querySelector('#vgSvg')
+      vgSvg.innerHTML = '';
+      const script = document.createElement('script');
+      script.type = "text/template";
+      script.innerHTML = `---
+markmap:
+  maxWidth: 300
+---
+${text.trim()}`;
+        vgSvg.appendChild(script);
+        markmap.autoLoader.ready.then(() => {
+          markmap.autoLoader.render(vgSvg);
+        })
+      }
+       // add an event listener to run when a message is received
+     window.addEventListener("message", ({ data, source }) => {
+      try { 
+        const { parentId } = JSON.parse(data);
+       if(parentId && !this.broadCast) {
+              // frist init
+              this.broadCast =  new BroadcastChannel(parentId);
+              this.broadCast.postMessage({ output });
+              // wait for event
+              this.broadCast.onmessage = ({data}) => {
+                  if(this[data.funcName]) {
+                    this[data.funcName](data.params)
+                  }
+              }
+        }
+      } catch {}
+      
+      });
+  </script>
+</body>
+
+</html>

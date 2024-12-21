@@ -1,0 +1,107 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import "theme/color.scss";
+@import "app/modules/form-field/style.scss";
+@import "app/modules/glass-morphism/glass-morphism.scss";
+@import "./animista.scss";
+@import "theme/tailwind.scss";
+
+:root.theme-dark {
+  color-scheme: dark;
+}
+
+.preview-iframe {
+  /* tell browsers to make the iframe opaque
+     for documents with color-scheme:dark */
+  color-scheme: light;
+  background-color: white;
+}
+    .builder-mode {
+      position: relative;
+     &.active, &:hover {
+        border: 0.01px solid var(--ion-color-primary);
+        & > .label-builder-mode {
+          display: flex;
+        }
+      }
+       .label-builder-mode {
+      z-index: 999999;
+      width: auto;
+      display: none;
+      background-color: var(--ion-color-primary);
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid var(--ion-color-primary);
+      border-radius: 0 0 4px 4px;
+      padding: 0 4px 2px 4px;
+      color: white;
+    }
+    .min-h-25 {
+      min-height: 25px;
+    }
+   }
+
+.custom-popup {
+  --ion-background-color: transparent;
+  --box-shadow: 0;
+  --ion-color-step-100: transparent;
+  --box-shadow: none;
+  --height: auto;
+
+}
+.custom-popup-v2 {
+  --ion-background-color: transparent;
+  --box-shadow: 0;
+  --ion-color-step-100: transparent;
+  --box-shadow: none;
+  --height: auto;
+  --width: 100vw;
+}
+// .select-element-popover {
+//   --width: 600px;
+// }
+
+//  ant design custom
+.ant-image-preview-img {
+    display: inline-block;
+}
+// select
+.ant-select-dropdown {
+  border-radius: 12px; 
+}
+// custom popover
+.custom-popover {
+  .ant-popover-inner {
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+ 
+}

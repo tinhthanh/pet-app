@@ -1,0 +1,23 @@
+
+
+      <form class="form-card">
+        <p class="form-card-title">Chúng tôi đang gửi email số của bạn để xác nhận nó
+          <span class="icon-[simple-icons--simplelogin] text-4xl"></span>
+        </p>
+        <p class="form-card-prompt">Nhập 4 chữ số cuối của số chúng tôi gửi email cho bạn</p>
+        <div class="form-card-input-wrapper">
+          <input [ngClass]="{'disabled' : loading}" [formControl]="otp" class="form-card-input" placeholder="____" maxlength="4" type="tel">
+          <div class="form-card-input-bg"></div>
+        </div>
+
+        <p class="call-again">
+          @if(loading) {
+            <ion-spinner role="progressbar" ></ion-spinner>
+          } @else {
+            <span (click)="nextStep.emit(OnBoardStep.forgot)" class="underlined">
+              Gửi lại </span> trong {{count()}} giây
+          }
+        </p>
+      </form>
+
+

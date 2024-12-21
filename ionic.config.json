@@ -1,0 +1,7 @@
+{
+  "name": "vg-builder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

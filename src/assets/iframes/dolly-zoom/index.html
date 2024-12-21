@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+  .box {
+  position: absolute;
+  perspective: 400px;
+  width: 750px;
+  height: 478.75px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: perspective 5s;
+}
+
+.fore-box {
+  z-index: 10;
+}
+
+.bg-box {
+  z-index: 5;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750px;
+  height: 478.75px;
+  transition: all 5s;
+}
+
+.fore {
+  z-index: 10;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/9332/hills-foreground.png);
+  background-size: cover;
+}
+
+.bg {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/9332/hills-bg.jpg);
+  transform: translateZ(150px);
+  background-size: cover;
+}
+
+.box.on .fore {
+  transform: translateZ(200px);
+}
+
+.box.on .bg {
+  transform: translateZ(0);
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
+.ui {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+  </style>
+</head>
+<body>
+
+<div class='container'>
+  <div class='ui'>
+    <div class='box fore-box'>
+      <div class='img fore'></div>
+    </div>
+    <div class='box bg-box'>
+      <div class='img bg'></div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"  ></script>
+<script>
+    $('.ui').hover(function() {
+      $('.box').toggleClass('on');
+    })
+</script>
+
+</body>
+</html>

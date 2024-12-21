@@ -1,0 +1,29 @@
+.form-group {
+  margin: 15px 0px;
+}
+  
+  .btn-copy {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid var(--color-100);
+    border-radius: 50%;
+    top: -11.5px;
+    right: 25px;
+    background-color: transparent;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: var(--all-transition);
+  }
+  
+  .btn-copy:hover {
+    background-color: var(--color-border);
+    transform: scale(1.2);
+  }
+  
+  .btn-copy:active {
+    transform: scale(1.1);
+  }
